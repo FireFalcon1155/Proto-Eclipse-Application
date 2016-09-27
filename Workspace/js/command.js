@@ -11,6 +11,12 @@ var helps={
 	help10:"(help) OPENS THIS MESSAGE",
 	help11:"(view) PRINTS ALL DIRECTORY WITHIN WORKSPACE"
 }
+//for object:
+//remove n item
+//manage n item
+//push item
+//for array:
+//pop, shift, unshift, push
 var input;
 var error="Command Not Found"
 var one, two, three, four, five;
@@ -70,17 +76,20 @@ function main (item) {
 		case "oC":
 			one=arryr[1];
 			two=arryr[2];
-			three=arryr[3];
+			three=arryr.slice(3);
+			three=three.join(" ");
 			oc(one,two,three);
 			break;
 		case "aC":
 			one=arryr[1];
-			two=arryr[2];
+			two=arryr.slice(2);
+			two=two.join(" ");
 			ac(one,two);
 			break;
 		case "sC":
 			one=arryr[1];
-			two=arryr[2];
+			two=arryr.slice(2);
+			two=two.join(" ");
 			sc(one,two);
 			break;
 		default:
