@@ -1,22 +1,16 @@
 var helps={
 	help1:"PROTO ECLIPSE HELP MENU: ",
 	help2:"COMMANDS ARE DISPLAYED WITHIN PARENTHESISES: (command)",
-	help3:"WHEN INSTRUCTION INSTRUCTS YOU TO ENTER A VALUE IN BLANK, REPLACE THE WORD WITH THE VALUE. EXAMPLE: COMMAND BEING (manage name value) AND INSTRUCTION BEING MAKE CHANGE TO THE FILE WITH THE NAME IN (name). REPLACE (name) WITH THE VALUE",
-	help4:"WHEN YOU ARE SPECIFING TO A DIRECTORY, YOU MUST LIST THE PATH TO. EX: HOME ",
 	help7:"(del name) ENTER THE FOLDER YOU WISH TO DELETE IN NAME",
-	helpa:"(object name propertyName value)",
-	helpb:"(array name value)",
-	helpc:"(string name value)",
-	help8:"(manage name value propertyName(only if object)) MAKE CHANGE TO THE FILE WITH THE NAME IN (name) AND THE VALUE YOU WISH TO ADD/CHANGE IN (value)",
+	helpa:"(object name propertyName value) CREATES A OBJECT WITHIN COMPUTER",
+	helpb:"(array name value) CREATES A ARRAY WITHIN COMPUTER",
+	helpc:"(string name value) CREATES A STRING WITHIN COMPUTER",
+	help8:"(gmanage name value type propertyName(only if object)) MAKE CHANGE TO THE FILE WITH THE NAME IN (name) AND THE VALUE YOU WISH TO ADD/CHANGE IN (value)",
+	lol:"(amanage action name value) TO MANAGE ARRAY; ACTIONS ARE PUSH, SHIFT, UNSHIFT, POP. VALUE IS NEEDED FOR UNSHIFT AND PUSH",
 	help10:"(help) OPENS THIS MESSAGE",
-	help11:"(view) PRINTS ALL DIRECTORY WITHIN WORKSPACE"
+	doesntMatter:"(view) PRINTS ALL DIRECTORY WITHIN WORKSPACE",
+	clear:"(clear) CLEARS WORKSPACE"
 }
-//for object:
-//remove n item
-//manage n item
-//push item
-//for array:
-//pop, shift, unshift, push
 var input;
 var error="Command Not Found"
 var one, two, three, four, five;
@@ -32,8 +26,11 @@ function main (item) {
 				case "clear":
 					feed="clear";
 					break;
-				case "manage":
-					feed="manage";
+				case "gmanage":
+					feed="gmanage";
+					break;
+				case "amanage":
+					feed="amanage"
 					break;
 				case "help":
 					feed="help";
@@ -61,11 +58,19 @@ function main (item) {
 		case "clear":
 			clear();
 			break;
-		case "manage":
+		case "gmanage":
 			one=arryr[1];
 			two=arryr[2];
 			three=arryr[3];
-			manage(one,two,three);
+			four=arryr[4];
+			gmanage(one,two,three,four);
+			break;
+		case "amanage":
+			one=arryr[1];
+			two=arryr[2];
+			three=arryr[3];
+			four=arryr[4];
+			amanage(one,two,three,four);
 			break;
 		case "help":
 			help();
@@ -93,93 +98,117 @@ function main (item) {
 			sc(one,two);
 			break;
 		default:
-			$("#targetDiv").append('<pre>'+error+'</pre>');
+			$("#targetDiv").prepend('<pre>'+error+'</pre>');
 			break;
 	}
 };
-//selecting last item in array
-// my_array[my_array.length - 1];
 function del (folder) {
 	if(computer[folder]){
 		delete computer[folder];
 	}else{
-		$("#targetDiv").append("<pre>Folder Not Found</pre>");
+		$("#targetDiv").prepend("<pre>Folder Not Found</pre>");
 	}
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function clear () {
 	$("#targetDiv").empty();
 }
-function manage (name, propertyName, value) {
+//for array:
+//pop, shift, unshift, push
+function gmanage (names, value,type, propertyName) {
 	var pN=propertyName;
-	if(pN){
-		computer[name]={[pN]:value};
-	}else if(computer[name]){
-		computer[name]=value;
-		$("#targetDiv").append("<pre>File Management Complete</pre>");
-	}else{
-		$("#targetDiv").append("<pre>File Not Found</pre>");	
+	if(!names&&!value){
+		$("#targetDiv").prepend("<pre>Missing Information</pre>");
 	}
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	if(pN){
+		//for objects
+		computer[names]={[pN]:value};
+	}else if(computer[names]){
+		computer[names]=value;
+		$("#targetDiv").prepend("<pre>File Management Complete</pre>");
+	}else{
+		$("#targetDiv").prepend("<pre>File Not Found</pre>");	
+	}
+	$('#targetDiv').scrollTop($('#div1').height());
+}
+function amanage(action, namez, value){
+	var actions, names, values;
+	actions=action;
+	names=namez;
+	values=value;
+	actions=actions.toLowerCase();
+	switch(actions){
+		case "pop":
+			computer[names].pop();
+			break;
+		case "shift":
+			computer[names].shift();
+			break;
+		case "unshift":
+			computer[names].unshift(values);
+			break;
+		case "push":
+			computer[names].push(values);
+			break;
+		default:
+			$("#targetDiv").prepend("<pre>Invalid Action</pre>");	
+			break;
+	}
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function help () {
 	for(var out in helps){
-		$("#targetDiv").append("<pre>"+helps[out]+"</pre>");	
+		$("#targetDiv").prepend("<pre>"+helps[out]+"</pre>");	
 	}
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function view () {
-	$("#targetDiv").append('<pre>' + JSON.stringify(computer,null,1) + '</pre>');  
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$("#targetDiv").prepend('<pre>' + JSON.stringify(computer,null,1) + '</pre>');  
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function oc (newFileName,propertyName, value) {
 	var newFile,property, values;
 	newFile=newFileName;
 	property=propertyName;
 	values=value;
+	if(!newFile||!property||!values){
+		$("#targetDiv").prepend("<pre>Missing Information</pre>");
+	}
 	if(!computer[newFile]){
 		computer[newFile]={[property]:values};
-		$("#targetDiv").append("<pre>File Created</pre>");
+		$("#targetDiv").prepend("<pre>File Created</pre>");
 	}else{
-		$("#targetDiv").append("<pre>File Name Exists</pre>");
+		$("#targetDiv").prepend("<pre>File Name Exists</pre>");
 	}
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function ac (names, value) {
 	var property, values;
 	property=names;
 	values=value;
+	if(!property||!values){
+		$("#targetDiv").prepend("<pre>Missing Information</pre>");
+	}
 	if(!computer[property]){
    		computer[property]=[values];		
-		$("#targetDiv").append("<pre>File Created</pre>");
+		$("#targetDiv").prepend("<pre>File Created</pre>");
 	}else{
-		$("#targetDiv").append("<pre>File Name Exists</pre>");
+		$("#targetDiv").prepend("<pre>File Name Exists</pre>");
 	}		
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$('#targetDiv').scrollTop($('#div1').height());
 }
 function sc (names, value) {
 	var property, values;
 	property=names;
 	values=value;
+	if(!property||!values){
+		$("#targetDiv").prepend("<pre>Missing Information</pre>");
+	}
 	if(!computer[property]){
 		computer[property]=values;
-		$("#targetDiv").append("<pre>File Created</pre>");
+		$("#targetDiv").prepend("<pre>File Created</pre>");
 	}else{
-		$("#targetDiv").append("<pre>File Name Exists</pre>");
+		$("#targetDiv").prepend("<pre>File Name Exists</pre>");
 	}
-	$('#targetDiv').animate({ 
-	   scrollTop: $(document).height()+$(window).height()}
-	);
+	$('#targetDiv').scrollTop($('#div1').height());
 }
