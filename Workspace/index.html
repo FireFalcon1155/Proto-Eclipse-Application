@@ -3,102 +3,41 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<style>
-		body{
-			background-color: black;
-			display: flex; 
-		}
-		.main{
-			background-color: white;
-			background-repeat: none;
-			height: 100px;
-			width: 100%;
-			float: left;
-			left: 0;
-		}
-		#footer{
-			bottom: 0px;
-			position: absolute;
-			background-color: darkgray;
-			flex-grow: 10; 
-
-		}
-		.icons{
-			position: absolute;
-			top: 20%;
-			bottom: 50%;
-			left: 50%;
-			right: 50%;
-			display: table-cell;
-			vertical-align: center;
-		}
-		#input{
-			background-color: white;
-			bottom: 102px;
-			position: absolute;
-			right: 0;
-			height: 15px;
-			min-width: 98.4%;
-		}
-		#character{
-			color: green;
-			bottom: 107px;
-			position: absolute;
-			left: 2px;
-			height: 15px;
-		}
-		.text{
-			color: green;
-		}
-		#targetDiv{
-			width: 100%;
-			height: 80%;
-			background-color: black;
-			overflow: auto; 
-			flex-grow: 90; 
-			color: green;
-		}
-		   .text{
-		   	font-size: 20px;
-		   }
-html, body { margin: 0; padding: 0; min-height: 100vh; }
-footer { height: 100px; }
-#targetDiv { height: calc(100vh - 100px - 30px); }
-	</style>
+	<link rel="stylesheet" href="styles.css">
 	<title>Workspace</title>
 </head>
 <body>
-<div id="targetDiv"></div>
-	<div id="main" class="row">
-		<div class="col">
-			<span id="character">></span>
-		</div>
-		<div class="col-xs-12 col-s-12 col-l-12">
-			<input type="text" id="input" placeholder="Type Help For Help" name="q">
-		</div>
+<div id="targetDiv">
+	<pre>Proto Eclipse</pre>
+</div>
+<div id="main" class="row">
+	<div class="col">
+		<span id="character">></span>
 	</div>
-	<footer id="footer" class="main">
-		<img src="logo.png" class="icons" alt="">
-	</footer>
-
+	<div class="col-xs-12 col-s-12 col-l-12">
+		<input type="text" id="input" placeholder="Type Help For Help" name="q">
+	</div>
+</div>
+<footer id="footer" class="main">
+	<img src="logo.png" class="icons" alt="">
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	var fir=document.getElementById("input");
-var sec;
-fir.onkeydown = function(event) {
-		var e=event||windows.event;
-    sec=document.getElementById('input').value;
+	var sec;
+	fir.onkeydown = function(event) {
+			var e=event||windows.event;
+	    sec=document.getElementById('input').value;
 
-    if (e.keyCode == 13) {
-    	
-        main(sec);
-        $("#input").val('');
-    }
-}
+	    if (e.keyCode == 13) {
+	    	
+	        main(sec);
+	        $("#input").val('');
+	    }
+	}
 </script>
 <script src="js/personnel.js"></script>
 <script src="js/computer.js"></script>
 <script src="js/command.js"></script> 
-
 </body>
 </html>
