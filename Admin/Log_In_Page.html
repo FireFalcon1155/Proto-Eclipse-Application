@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Log In</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<form>
+	<h2><span class="entypo-login"></span> Login</h2>
+	<button class="submit" id="but"><span class="entypo-lock"></span></button>
+	<span class="entypo-user inputUserIcon"></span>
+	<input type="text" name="u" class="user" placeholder="ID"/>
+	<span class="entypo-key inputPassIcon"></span>
+	<input type="password" name="p" class="pass" placeholder="Password"/>
+</form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="../Database/persons.js"></script>
+<script>
+        $('#but').click(function(e) {
+            e.preventDefault(); 
+            var ID=$('input[name=u]').val();
+            var password = $('input[name=p]').val();
+            if(personnel[ID]){
+                if(personnel[ID].password === password){
+                    window.open("Workspace/admin.html");
+                    window.close();
+                }
+                else{
+                    alert("Incorrect ID Or Password");
+                }
+            }
+            else{
+                alert("Incorrect ID Or Password");
+            }
+        });
+</script>
+<script>
+	$(".user").focusin(function(){
+	  $(".inputUserIcon").css("color", "#e74c3c");
+	}).focusout(function(){
+	  $(".inputUserIcon").css("color", "white");
+	});
+
+	$(".pass").focusin(function(){
+	  $(".inputPassIcon").css("color", "#e74c3c");
+	}).focusout(function(){
+	  $(".inputPassIcon").css("color", "white");
+	});
+</script>
+</html>
+
+

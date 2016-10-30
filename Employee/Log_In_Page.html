@@ -1,4 +1,22 @@
-    	$(document).ready(function(){
+  <!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+<body>
+<div class="login">
+	<h1>Login</h1>
+    <form>
+    	<input type="text" name="u" placeholder="ID" required="required" />
+        <input type="password" name="p" placeholder="Password" required="required" />
+        <button id="but" type="submit" class="btn btn-primary btn-block btn-large">Enter Workspace</button>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="../Database/persons.js"></script>
+<script>
             $('#but').click(function(e) {
                 e.preventDefault(); 
                 console.log("in function");
@@ -14,11 +32,13 @@
                         alert("Incorrect ID Or Password");
                         console.log("second failing")
                     }
-
                 }
                 else{
                     alert("Incorrect ID Or Password")
                     console.log("failing")
                 }
             });
-        });
+</script>
+<a href="../Admin/Log_In_Page.html" id="lol">Admin Log In</a>
+</body>
+</html>
