@@ -26,7 +26,7 @@ var log={
 		optimizations:[],
 		comments:"Admin have more options than employee, while employee have some commands admins dont have. Commands coming soon.",
 		version:"1.1"
-	}
+	},
 	Oct19:{
 		newFeature:["Alias Command"],
 		bugRemoval:[],

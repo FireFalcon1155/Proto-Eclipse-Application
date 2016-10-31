@@ -10,7 +10,7 @@ var computer={
 	},
 	"Downloads":{
 		
-	}
+	},
 	"Library":{
 		
 	},
@@ -21,12 +21,6 @@ var computer={
 		
 	},
 	"Pictures":{
-		
-	},
-	"Library":{
-		
-	},
-	"Downloads":{
 		
 	},
 	"Files":{
