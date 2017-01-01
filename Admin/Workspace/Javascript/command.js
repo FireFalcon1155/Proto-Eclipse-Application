@@ -15,7 +15,8 @@ var helps={
 	a:"(lorem) LOADS LOREM IPSUM",
 	wea:"(weather) LOADS CURRENT WEATHER IN YOUR LOCATION",
 	reset:"(refresh) REFRESHES THE PAGE",
-	alias:"(alias file name) MAKES A COPY OF CURRENT DIRECTORY."
+	alias:"(alias file name) MAKES A COPY OF CURRENT DIRECTORY.",
+	history:"(history) SHOWS RELEASE HISTORY."
 }
 var lorem="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, purus nam, auctor maecenas mus vitae a aliquet, dictumst eget, molestie in et magna, convallis non. At pede aliquet <br>interdum cras, sed volutpat enim pede amet, quisque donec mus mauris arcu, eu tempus, wisi ut cursus neque rhoncus in. Nulla dui <br>lorem semper ante. Purus amet porta elit id, nibh fusce, semper eget commodo suspendisse, mauris leo nec sed sem potenti. Vel mi, egestas blandit <br>pellentesque varius ante. Sed morbi et metus est nunc aliquam, eget orci tempus cum convallis quis. Neque adipiscing class et donec magna velit, <br>feugiat sem amet quam ac ac aut, augue viverra morbi consectetuer. Sit laborum sed sed, sapien integer sit, urna praesent, a libero nec vitae <br>laoreet mauris. Est aliquam, morbi tortor wisi tellus amet, ea amet accumsan lobortis cras mi, dui congue dolor semper sed at ipsum, velit tortor <br>donec adipiscing justo. Aliquet dolor faucibus id. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parturient sed, cras elit libero, ultricies ut sed mollis, venenatis magna ac platea tincidunt posuere a. Quam excepturi vel hendrerit,<br> quis mi cras vivamus, nec quam mauris libero vel odio, luctus proin dui penatibus enim pede suspendisse, <br>vitae ante ut. Tellus pulvinar sollicitudin dapibus. Officiis elementum ipsum tincidunt facilisis, vel odio, id integer leo. Nulla pulvinar neque <br>vel, libero scelerisque, nibh integer tincidunt per, orci quis tempor arcu, cras suspendisse nam donec. Dui ultrices sed wisi quam erat lacus. <br>Aenean dui bibendum, quis felis sit vel, eros dui nec, eget pretium non ac. Tellus gravida, quis porta ut nulla at vel, quis donec id, nunc <br>curabitur ullamcorper lectus eu consequat, integer at accumsan mi. In aliquam fusce, erat porta in in risus et, erat id adipiscing inceptos <br>adipiscing velit, in arcu nec sem wisi. Nec laoreet erat, ut suscipit proin arcu feugiat ante, non sit placerat. Suscipit a ipsum, taciti justo <br>ante dui, habitant mauris, non ut nibh ipsum curabitur, sollicitudin neque nascetur fermentum dignissim. <br>Augue wisi arcu nulla. Sed et tortor <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vitae, pretium dui tempor amet ullamcorper amet euismod, in massa congue urna fusce, quis cubilia ultrices lobortis, felis fusce. Platea rutrum <br> pulvinar a, interdum non quam suspendisse neque, per amet fringilla sem magna litora. Quis lacus nulla nec consectetuer sapien lectus, congue donec. <br>Malesuada elit mi placerat magna turpis. Praesent scelerisque quis pretium sociis, fusce luctus. Similique ultricies faucibus feugiat, pede duis, <br>venenatis magna. Vestibulum dignissim nulla suscipit ac ullamcorper. Vestibulum voluptatem ligula, ac integer feugiat, lectus at magna, dolore <br>pretium molestie pulvinar. Erat a proin. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Luctus ac in, elit esse, ipsam sed mollis phasellus dictum. Nec vitae. Cras purus praesent porttitor a dolor natoque, urna amet velit sed <br>adipiscing. Sit arcu metus magna, viverra dolor, fames iaculis praesent congue sagittis. Pulvinar dis purus <br>lobortis mauris lectus, nulla rutrum volutpat tempor ut quam interdum, senectus ultrices vestibulum massa, aliquam ridiculus et vitae pede dui <br>vestibulum, eu possimus ante ac. Nec lacus mi ut ullamcorper consectetuer, mattis faucibus, nec quis ea quisque sed hendrerit. Ipsam eu feugiat <br>ipsum, ligula nulla, metus mollis faucibus lacinia, ligula commodo lobortis in, rem sed quis dignissim rutrum mi dapibus. Leo etiam, dui metus <br>placerat faucibus ut, potenti arcu ultricies, tempus donec et iaculis, platea justo amet habitant. Egestas tincidunt, aliquet facilisi porttitor <br>dignissim magnis.";
 var input;
@@ -68,6 +69,9 @@ function main (item) {
 					break;
 				case "clear":
 					feed="clear";
+					break;
+				case "history":
+					feed="history";
 					break;
 			}
 		}
@@ -135,6 +139,9 @@ function main (item) {
 			one=arryr[1];
 			two=arryr[2];
 			alias(one,two);
+			break;
+		case "history":
+			history();
 			break;
 		default:
 			$("#targetDiv").prepend('<pre>'+error+'</pre>');
@@ -339,8 +346,99 @@ function alias(item, itemName){
 	var self=computer[item];
 	computer[itemName]=self;
 	if(computer[itemName]=self){
-		$("#targetDiv").prepend("<pre>File Copie</pre>");
+		$("#targetDiv").prepend("<pre>File Copied</pre>");
 		console.log("File Copied");
 	}
 	$('#targetDiv').scrollTop($('#div1').height());
+}
+function history(){
+	var output="";
+	var rawoutput=[];
+	for (var i = 0; i < log.length; i++) {
+	   rawoutput.push(log[i]);
+	}
+	for (var i = 0; i < rawoutput.length; i++) {
+		output+="\n Date: ";
+		output+=rawoutput[i].date;
+		output+="\n New Feature: ";
+		output+=rawoutput[i].newFeature;
+		output+="\n Bug Removal: ";
+		output+=rawoutput[i].bugRemoval;
+		output+="\n Optimizations: ";
+		output+=rawoutput[i].optimizations;
+		output+="\n Comments: ";
+		output+=rawoutput[i].comments;
+		output+="\n Version: ";
+		output+=rawoutput[i].version;
+		output+="\n Changes: ";
+		output+=rawoutput[i].changes;
+		output+="\n -------------------------------------------------------------"
+	}
+	$("#targetDiv").prepend("<pre>"+output+"</pre>");
+	var dates=[];
+	var news=[];
+	var bug=[];
+	var opt=[];
+	var changes=[];
+	for (var i = 0; i < log.length; i++) {
+		dates.push(log[i].date);
+		news.push(log[i].newFeatureNumber);
+		bug.push(log[i].bugRemovalNumber);
+		opt.push(log[i].optimizationsNumber);
+		changes.push(log[i].changes);
+	}
+	$("#targetDiv").prepend("<canvas></canvas>");
+	$("canvas").first().attr("id","history");
+	$("canvas").first().attr("height","100");
+	$("canvas").first().attr("width","300");
+	var ticks = [0,1,2,3];
+	var ctx = document.getElementById("history");
+	Chart.defaults.global.elements.line.tension = 0.2;
+	var myChart = new Chart(ctx, {
+	type: 'line',
+	data: {
+	    labels: dates,
+	    datasets: [
+		{
+			label: 'New Feature',
+			
+			data: news,
+			borderColor: "rgb(10, 242, 255)"
+		},{
+			label: 'Bug Removal',
+			data: bug,
+			
+			borderColor: "rgb(34, 255, 10)"
+		},{
+			label: 'Optimizations',
+			data: opt,
+			
+			borderColor: "rgb(10, 38, 255)"
+		},{
+			label: 'Changes',
+			data: changes,
+			
+			borderColor: "rgba(153,255,51,0.4)"
+		}]
+	},
+    options: {
+    	scales: {
+      		yAxes: [{
+        		ticks: {
+	          		autoSkip: false,
+	          		max: ticks[ticks.length - 1],
+	          		min: ticks[0]
+        		},
+			        afterBuildTicks: function(scale) {
+			          	scale.ticks = ticks;
+			          	return;
+			        },
+			        beforeUpdate: function(oScale) {
+			          	return;
+        			}
+      			}]
+    		}
+  		}
+	});
+	$('#targetDiv').scrollTop($('#div1').height());	
 }
