@@ -2,11 +2,11 @@ var log=[
 	{
 		date:"Sep27",
 		newFeature:["Initinal Release"],
-		newFeatureNumber:1,
+		newFeatureNumber:1, //for chart
 		bugRemoval:[],
-		bugRemovalNumber:0,
+		bugRemovalNumber:0, //for chart again
 		optimizations:[],
-		optimizationsNumber:0,
+		optimizationsNumber:0, //yea u got it
 		comments:"Command Line In Javascript Is Officially Released.",
 		version:"Alpha",
 		changes:1
@@ -62,7 +62,7 @@ var log=[
 	{
 		date:"Dec31",
 		newFeature:["History Command"],
-		newFeatureNumber:0,
+		newFeatureNumber:1,
 		bugRemoval:[],
 		bugRemovalNumber:0,
 		optimizations:["ChartJs"],
@@ -70,6 +70,17 @@ var log=[
 		comments:"Uses ChartJS to display past versions",
 		version:"1.3",
 		changes:2
+	},{
+		date:"Jan3",
+		newFeature:[],
+		newFeatureNumber:0,
+		bugRemoval:[],
+		bugRemovalNumber:0,
+		optimizations:["'Proto Eclipse now appears even after clear command'"],
+		optimizationsNumber:1,
+		comments:"Proto Eclipse now appears even after clear command",
+		version:"1.3.1",
+		changes:1
 	}
 ];
 // :{

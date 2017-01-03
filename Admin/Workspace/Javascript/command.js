@@ -161,6 +161,9 @@ function del (folder) {
 function clear () {
 	$("#targetDiv").empty();
 	console.log("cleared");
+	$("#targetDiv").prepend("<pre>Proto Eclipse</pre>");	
+	$('#targetDiv').scrollTop($('#div1').height());
+
 }
 function gmanage (names, value,type, propertyName) {
 	var pN=propertyName;
