@@ -1,3 +1,6 @@
+var executive=["IT Manager","Hardware Systems Manager","Head of Programming Department","Chief Marketing Officer","Senior Technology Engineer","Chief Sales Officer","Head of Web Technologies","Business Analyst","Anditor","Chief Finance Officer","Project Manager","Head of Creative Ventures","Head of Engineering Department","Senior Database Administrator","Teleocommunications Manager","Project Leader","Networking Administrator"];
+var admin=["Chairman","President","Vice Chairman","CEO","IT Director","Chief Technical Officer","MIS Director","Chief Information Officer","Vice President","Senior Manager","Administration Head"];
+var operational=["Database Commissioner","APplication Engineer","Network Administrator","Help Desk Technician","System Administrator","Security Specialist","Software Programmer","Telecommunications Engineer", "Head of Content Writing Team","Hardware Engineer","Software Testing Engineer","Head of Technician Team","Technology Analyst","Technology Associate","Trainee"];
 var helps={
 	//DEL, CREATION COMMANDS, MANAGE COMMANDS, 
 	help1:"PROTO ECLIPSE HELP MENU: ",
@@ -16,7 +19,14 @@ var helps={
 	wea:"(weather) LOADS CURRENT WEATHER IN YOUR LOCATION",
 	reset:"(refresh) REFRESHES THE PAGE",
 	alias:"(alias file name) MAKES A COPY OF CURRENT DIRECTORY.",
-	history:"(history) SHOWS RELEASE HISTORY."
+	history:"(history) SHOWS RELEASE HISTORY.",
+	employee:"(em) ADDS AN EMPLOYEE",
+	changee:"(emc ID) CHANGES INFORMATION ABOUT A CERTAIN EMPLOYEE",
+	deletee:"(emd ID) DELETES THE EMPLOYEE",
+	liste:"(eml) LISTS ALL EMPLOYEES",
+	promoteE:"(emp ID) PROMOTES EMPLOYEE",
+	demoteE:"(emdm ID) DEMOTES EMPLOYEE",
+	h:"(hier) SHOWS RANKS HIERACHY",
 }
 var lorem="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, purus nam, auctor maecenas mus vitae a aliquet, dictumst eget, molestie in et magna, convallis non. At pede aliquet <br>interdum cras, sed volutpat enim pede amet, quisque donec mus mauris arcu, eu tempus, wisi ut cursus neque rhoncus in. Nulla dui <br>lorem semper ante. Purus amet porta elit id, nibh fusce, semper eget commodo suspendisse, mauris leo nec sed sem potenti. Vel mi, egestas blandit <br>pellentesque varius ante. Sed morbi et metus est nunc aliquam, eget orci tempus cum convallis quis. Neque adipiscing class et donec magna velit, <br>feugiat sem amet quam ac ac aut, augue viverra morbi consectetuer. Sit laborum sed sed, sapien integer sit, urna praesent, a libero nec vitae <br>laoreet mauris. Est aliquam, morbi tortor wisi tellus amet, ea amet accumsan lobortis cras mi, dui congue dolor semper sed at ipsum, velit tortor <br>donec adipiscing justo. Aliquet dolor faucibus id. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parturient sed, cras elit libero, ultricies ut sed mollis, venenatis magna ac platea tincidunt posuere a. Quam excepturi vel hendrerit,<br> quis mi cras vivamus, nec quam mauris libero vel odio, luctus proin dui penatibus enim pede suspendisse, <br>vitae ante ut. Tellus pulvinar sollicitudin dapibus. Officiis elementum ipsum tincidunt facilisis, vel odio, id integer leo. Nulla pulvinar neque <br>vel, libero scelerisque, nibh integer tincidunt per, orci quis tempor arcu, cras suspendisse nam donec. Dui ultrices sed wisi quam erat lacus. <br>Aenean dui bibendum, quis felis sit vel, eros dui nec, eget pretium non ac. Tellus gravida, quis porta ut nulla at vel, quis donec id, nunc <br>curabitur ullamcorper lectus eu consequat, integer at accumsan mi. In aliquam fusce, erat porta in in risus et, erat id adipiscing inceptos <br>adipiscing velit, in arcu nec sem wisi. Nec laoreet erat, ut suscipit proin arcu feugiat ante, non sit placerat. Suscipit a ipsum, taciti justo <br>ante dui, habitant mauris, non ut nibh ipsum curabitur, sollicitudin neque nascetur fermentum dignissim. <br>Augue wisi arcu nulla. Sed et tortor <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vitae, pretium dui tempor amet ullamcorper amet euismod, in massa congue urna fusce, quis cubilia ultrices lobortis, felis fusce. Platea rutrum <br> pulvinar a, interdum non quam suspendisse neque, per amet fringilla sem magna litora. Quis lacus nulla nec consectetuer sapien lectus, congue donec. <br>Malesuada elit mi placerat magna turpis. Praesent scelerisque quis pretium sociis, fusce luctus. Similique ultricies faucibus feugiat, pede duis, <br>venenatis magna. Vestibulum dignissim nulla suscipit ac ullamcorper. Vestibulum voluptatem ligula, ac integer feugiat, lectus at magna, dolore <br>pretium molestie pulvinar. Erat a proin. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Luctus ac in, elit esse, ipsam sed mollis phasellus dictum. Nec vitae. Cras purus praesent porttitor a dolor natoque, urna amet velit sed <br>adipiscing. Sit arcu metus magna, viverra dolor, fames iaculis praesent congue sagittis. Pulvinar dis purus <br>lobortis mauris lectus, nulla rutrum volutpat tempor ut quam interdum, senectus ultrices vestibulum massa, aliquam ridiculus et vitae pede dui <br>vestibulum, eu possimus ante ac. Nec lacus mi ut ullamcorper consectetuer, mattis faucibus, nec quis ea quisque sed hendrerit. Ipsam eu feugiat <br>ipsum, ligula nulla, metus mollis faucibus lacinia, ligula commodo lobortis in, rem sed quis dignissim rutrum mi dapibus. Leo etiam, dui metus <br>placerat faucibus ut, potenti arcu ultricies, tempus donec et iaculis, platea justo amet habitant. Egestas tincidunt, aliquet facilisi porttitor <br>dignissim magnis.";
 var input;
@@ -72,6 +82,24 @@ function main (item) {
 					break;
 				case "history":
 					feed="history";
+					break;
+				case "em":
+					feed="em";
+					break;
+				case "emc":
+					feed="emc";
+					break;
+				case "emd":
+					feed="emd";
+					break;
+				case "eml":
+					feed="eml";
+					break;
+				case "emp":
+					feed="emp";
+					break;
+				case "emdm":
+					feed="emdm";
 					break;
 			}
 		}
@@ -142,6 +170,28 @@ function main (item) {
 			break;
 		case "history":
 			history();
+			break;
+		case "em":
+			em();
+			break;
+		case "eml":
+			eml();
+			break;
+		case "emc":
+			one=arryr[1];
+			emc(one);
+			break;
+		case "emd":
+			one=arryr[1];
+			emd(one);
+			break;
+		case "emp":
+			one=arryr[1];
+			emp(one);
+			break;
+		case "emdm":
+			one=arryr[1];
+			emdm(one);
 			break;
 		default:
 			$("#targetDiv").prepend('<pre>'+error+'</pre>');
@@ -394,7 +444,7 @@ function history(){
 	$("canvas").first().attr("id","history");
 	$("canvas").first().attr("height","100");
 	$("canvas").first().attr("width","300");
-	var ticks = [0,1,2,3];
+	var ticks = [0,1,2,3,4,5,6];
 	var ctx = document.getElementById("history");
 	Chart.defaults.global.elements.line.tension = 0.2;
 	var myChart = new Chart(ctx, {
@@ -443,5 +493,136 @@ function history(){
     		}
   		}
 	});
+	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function em(){
+	var name=prompt("Last, First");
+	var sector=prompt("Sector");
+	var rank=prompt("Rank");
+	var mf=prompt("M/F");
+	var ID=prompt("ID");
+	var confirmin=false;
+	switch(sector){
+		case "admin":
+			if(admin.indexOf(rank)>-1){
+				confirmin=true;
+			}
+			else{
+				$("#targetDiv").prepend("<pre>Rank not found</pre>");
+			}
+			break;
+		case "executive":
+			if(executive.indexOf(rank)>-1){
+				confirmin=true;
+			}
+			else{
+				$("#targetDiv").prepend("<pre>Rank not found</pre>");
+			}
+			break;
+		case "operational":
+			if(operational.indexOf(rank)>-1){
+				confirmin=true;
+			}
+			else{
+				$("#targetDiv").prepend("<pre>Rank not found</pre>");
+			}
+			break;
+		default:
+			$("#targetDiv").prepend("<pre>Rank not found</pre>");
+			break;			
+	}
+	if(confirmin){
+		new Employee(name, sector, rank, mf, ID);
+		$("#targetDiv").prepend("<pre>"+"Employee Created; ID: "+ID+"; Name: "+name+"; Sector: "+sector+"; Rank: "+rank+"; M/F: "+mf+"</pre>");
+
+	}else{
+		console.log("Employee addition cancled");
+		$("#targetDiv").prepend("<pre>Employee addition cancled</pre>");
+	}
+	$('#targetDiv').scrollTop($('#div1').height());		
+}
+function emc(id){
+	if(!id){
+		$("#targetDiv").prepend("<pre>No ID</pre>");
+		console.log("No ID");
+	}else{
+		var change=prompt("What would you want to change? Rank, M/F, Or Name?");
+		var field=prompt("What would you change it to?");
+		employees[id][change]=field;
+		console.log(employees[id][change]);
+		$("#targetDiv").prepend("<pre>"+change+" changed to "+field+" on "+id+"</pre>");
+	}
+	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function emd(id){
+	delete employees[id];
+	$("#targetDiv").prepend("<pre>Deleted</pre>");
+	$('#targetDiv').scrollTop($('#div1').height());	
+
+}
+function eml(){
+	var output="";
+	for(var i in employees){
+		output+="Name: ";
+		output+=employees[i]["name"];
+		output+="; ";
+		output+=employees[i]["mf"];
+		output+="; Sector: ";
+		output+=employees[i]["sector"];
+		output+="; Rank: ";		
+		output+=employees[i]["rank"];
+		output+="\n";
+	}
+	if(output===""){
+		$("#targetDiv").prepend("<pre>No Employees</pre>");
+	}else{
+		$("#targetDiv").prepend("<pre>"+output+"</pre>");
+	}
+	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function emp(id){
+	var sectors=employees[id]["sector"];
+	var rank=employees[id]["rank"];
+	if(sectors==="operational"){
+		var current=operational.indexOf(rank);
+		var promoted=current-1;
+		employees[id]["rank"]=operational[promoted];
+		$("#targetDiv").prepend("<pre>Promoted</pre>");		
+	}else if(sectors==="admin"){
+		var current=admin.indexOf(rank);
+		var promoted=current-1;
+		employees[id]["rank"]=admin[promoted];
+		$("#targetDiv").prepend("<pre>Promoted</pre>");		
+	}else if(sectors==="executive"){
+		var current=executive.indexOf(rank);
+		var promoted=current-1;
+		employees[id]["rank"]=executive[promoted];
+		$("#targetDiv").prepend("<pre>Promoted</pre>");		
+	}else{
+		$("#targetDiv").prepend("<pre>Sector Not Found</pre>");		
+	}
+	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function emdm(id){
+	var sectors=employees[id]["sector"];
+	var rank=employees[id]["rank"];
+	if(sectors==="operational"){
+		var current=operational.indexOf(rank);
+		var demoted=current+1;
+		employees[id]["rank"]=operational[demoted];
+		$("#targetDiv").prepend("<pre>Demoted</pre>");		
+	}else if(sectors==="admin"){
+		var current=admin.indexOf(rank);
+		var demoted=current+1;
+		employees[id]["rank"]=admin[demoted];
+		$("#targetDiv").prepend("<pre>Demoted</pre>");		
+	}else if(sectors==="executive"){
+		var current=executive.indexOf(rank);
+		var demoted=current+1;
+		employees[id]["rank"]=executive[demoted];
+		$("#targetDiv").prepend("<pre>Demoted</pre>");		
+	}else{
+		$("#targetDiv").prepend("<pre>Sector Not Found</pre>");		
+	}
 	$('#targetDiv').scrollTop($('#div1').height());	
 }

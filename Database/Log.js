@@ -81,6 +81,17 @@ var log=[
 		comments:"Proto Eclipse now appears even after clear command",
 		version:"1.3.1",
 		changes:1
+	},{
+		date:"Jan8",
+		newFeature:["Employees Command Series: Add, delete, promote, demote, list, change employee status."],
+		newFeatureNumber:6,
+		bugRemoval:[],
+		bugRemovalNumber:0,
+		optimizations:[],
+		optimizationsNumber:0,
+		comments:"",
+		version:"1.4",
+		changes:6
 	}
 ];
 // :{
