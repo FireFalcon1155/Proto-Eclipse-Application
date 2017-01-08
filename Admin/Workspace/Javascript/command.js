@@ -1,6 +1,6 @@
 var executive=["IT Manager","Hardware Systems Manager","Head of Programming Department","Chief Marketing Officer","Senior Technology Engineer","Chief Sales Officer","Head of Web Technologies","Business Analyst","Anditor","Chief Finance Officer","Project Manager","Head of Creative Ventures","Head of Engineering Department","Senior Database Administrator","Teleocommunications Manager","Project Leader","Networking Administrator"];
 var admin=["Chairman","President","Vice Chairman","CEO","IT Director","Chief Technical Officer","MIS Director","Chief Information Officer","Vice President","Senior Manager","Administration Head"];
-var operational=["Database Commissioner","APplication Engineer","Network Administrator","Help Desk Technician","System Administrator","Security Specialist","Software Programmer","Telecommunications Engineer", "Head of Content Writing Team","Hardware Engineer","Software Testing Engineer","Head of Technician Team","Technology Analyst","Technology Associate","Trainee"];
+var operational=["Database Commissioner","Application Engineer","Network Administrator","Help Desk Technician","System Administrator","Security Specialist","Software Programmer","Telecommunications Engineer", "Head of Content Writing Team","Hardware Engineer","Software Testing Engineer","Head of Technician Team","Technology Analyst","Technology Associate","Trainee"];
 var helps={
 	//DEL, CREATION COMMANDS, MANAGE COMMANDS, 
 	help1:"PROTO ECLIPSE HELP MENU: ",
@@ -101,6 +101,9 @@ function main (item) {
 				case "emdm":
 					feed="emdm";
 					break;
+				case "hierarchy":
+					feed="hierarchy";
+					break;
 			}
 		}
 	arryr=items;
@@ -192,6 +195,9 @@ function main (item) {
 		case "emdm":
 			one=arryr[1];
 			emdm(one);
+			break;
+		case "hierarchy":
+			hierarchy();
 			break;
 		default:
 			$("#targetDiv").prepend('<pre>'+error+'</pre>');
@@ -444,7 +450,7 @@ function history(){
 	$("canvas").first().attr("id","history");
 	$("canvas").first().attr("height","100");
 	$("canvas").first().attr("width","300");
-	var ticks = [0,1,2,3,4,5,6];
+	var ticks = [0,1,2,3,4,5,6,7];
 	var ctx = document.getElementById("history");
 	Chart.defaults.global.elements.line.tension = 0.2;
 	var myChart = new Chart(ctx, {
@@ -625,4 +631,26 @@ function emdm(id){
 		$("#targetDiv").prepend("<pre>Sector Not Found</pre>");		
 	}
 	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function hierarchy(){
+	console.log("hi")
+	var oper="Operational Sector Ranks:\n ";
+	var admi="Administrative Sector Ranks:\n ";
+	var exe="Executive Sector Ranks:\n ";
+	for (var i = 0; i < operational.length; i++) {
+		oper+=operational[i];
+		oper+="\n ";
+	}
+	for (var i = 0; i < admin.length; i++) {
+		admi+=admin[i];
+		admi+="\n ";
+	}
+	for (var i = 0; i < executive.length; i++) {
+		exe+=executive[i];
+		exe+="\n ";
+	}
+	var output=oper+"\n"+"-----------\n"+admi+"\n"+"-----------\n"+exe+"\n"+"-----------\n";
+	$("#targetDiv").prepend("<pre>"+output+"</pre>");		
+	$('#targetDiv').scrollTop($('#div1').height());	
+
 }

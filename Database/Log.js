@@ -83,15 +83,15 @@ var log=[
 		changes:1
 	},{
 		date:"Jan8",
-		newFeature:["Employees Command Series: Add, delete, promote, demote, list, change employee status."],
-		newFeatureNumber:6,
+		newFeature:["Employees Command Series: Add, delete, promote, demote, list, change employee status.","Hierarchy Command"],
+		newFeatureNumber:7,
 		bugRemoval:[],
 		bugRemovalNumber:0,
 		optimizations:[],
 		optimizationsNumber:0,
-		comments:"",
+		comments:"Hierarchy Command Shows Ranks By Sector",
 		version:"1.4",
-		changes:6
+		changes:7
 	}
 ];
 // :{
