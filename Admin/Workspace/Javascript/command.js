@@ -1,113 +1,35 @@
-var executive=["IT Manager","Hardware Systems Manager","Head of Programming Department","Chief Marketing Officer","Senior Technology Engineer","Chief Sales Officer","Head of Web Technologies","Business Analyst","Anditor","Chief Finance Officer","Project Manager","Head of Creative Ventures","Head of Engineering Department","Senior Database Administrator","Teleocommunications Manager","Project Leader","Networking Administrator"];
-var admin=["Chairman","President","Vice Chairman","CEO","IT Director","Chief Technical Officer","MIS Director","Chief Information Officer","Vice President","Senior Manager","Administration Head"];
-var operational=["Database Commissioner","Application Engineer","Network Administrator","Help Desk Technician","System Administrator","Security Specialist","Software Programmer","Telecommunications Engineer", "Head of Content Writing Team","Hardware Engineer","Software Testing Engineer","Head of Technician Team","Technology Analyst","Technology Associate","Trainee"];
-var helps={
-	//DEL, CREATION COMMANDS, MANAGE COMMANDS, 
-	help1:"PROTO ECLIPSE HELP MENU: ",
-	help2:"COMMANDS ARE DISPLAYED WITHIN PARENTHESISES: (command)",
-	awertu:"DEFAULT DIRECTORY IS IN HOME",
-	help7:"(del name) ENTER THE FOLDER YOU WISH TO DELETE IN NAME",
-	helpa:"(object name propertyName value) CREATES A OBJECT WITHIN COMPUTER",
-	helpb:"(array name value) CREATES A ARRAY WITHIN COMPUTER",
-	helpc:"(string name value) CREATES A STRING WITHIN COMPUTER",
-	help8:"(gmanage name value type propertyName(only if object)) MAKE CHANGE TO THE FILE WITH THE NAME IN (name) AND THE VALUE YOU WISH TO ADD/CHANGE IN (value)",
-	lol:"(amanage action name value) TO MANAGE ARRAY; ACTIONS ARE PUSH, SHIFT, UNSHIFT, POP. VALUE IS NEEDED FOR UNSHIFT AND PUSH",
-	help10:"(help) OPENS THIS MESSAGE",
-	doesntMatter:"(view) PRINTS ALL DIRECTORY WITHIN WORKSPACE",
-	clear:"(clear) CLEARS WORKSPACE",
-	a:"(lorem) LOADS LOREM IPSUM",
-	wea:"(weather) LOADS CURRENT WEATHER IN YOUR LOCATION",
-	reset:"(refresh) REFRESHES THE PAGE",
-	alias:"(alias file name) MAKES A COPY OF CURRENT DIRECTORY.",
-	history:"(history) SHOWS RELEASE HISTORY.",
-	employee:"(em) ADDS AN EMPLOYEE",
-	changee:"(emc ID) CHANGES INFORMATION ABOUT A CERTAIN EMPLOYEE",
-	deletee:"(emd ID) DELETES THE EMPLOYEE",
-	liste:"(eml) LISTS ALL EMPLOYEES",
-	promoteE:"(emp ID) PROMOTES EMPLOYEE",
-	demoteE:"(emdm ID) DEMOTES EMPLOYEE",
-	h:"(hier) SHOWS RANKS HIERACHY",
-}
 var lorem="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, purus nam, auctor maecenas mus vitae a aliquet, dictumst eget, molestie in et magna, convallis non. At pede aliquet <br>interdum cras, sed volutpat enim pede amet, quisque donec mus mauris arcu, eu tempus, wisi ut cursus neque rhoncus in. Nulla dui <br>lorem semper ante. Purus amet porta elit id, nibh fusce, semper eget commodo suspendisse, mauris leo nec sed sem potenti. Vel mi, egestas blandit <br>pellentesque varius ante. Sed morbi et metus est nunc aliquam, eget orci tempus cum convallis quis. Neque adipiscing class et donec magna velit, <br>feugiat sem amet quam ac ac aut, augue viverra morbi consectetuer. Sit laborum sed sed, sapien integer sit, urna praesent, a libero nec vitae <br>laoreet mauris. Est aliquam, morbi tortor wisi tellus amet, ea amet accumsan lobortis cras mi, dui congue dolor semper sed at ipsum, velit tortor <br>donec adipiscing justo. Aliquet dolor faucibus id. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parturient sed, cras elit libero, ultricies ut sed mollis, venenatis magna ac platea tincidunt posuere a. Quam excepturi vel hendrerit,<br> quis mi cras vivamus, nec quam mauris libero vel odio, luctus proin dui penatibus enim pede suspendisse, <br>vitae ante ut. Tellus pulvinar sollicitudin dapibus. Officiis elementum ipsum tincidunt facilisis, vel odio, id integer leo. Nulla pulvinar neque <br>vel, libero scelerisque, nibh integer tincidunt per, orci quis tempor arcu, cras suspendisse nam donec. Dui ultrices sed wisi quam erat lacus. <br>Aenean dui bibendum, quis felis sit vel, eros dui nec, eget pretium non ac. Tellus gravida, quis porta ut nulla at vel, quis donec id, nunc <br>curabitur ullamcorper lectus eu consequat, integer at accumsan mi. In aliquam fusce, erat porta in in risus et, erat id adipiscing inceptos <br>adipiscing velit, in arcu nec sem wisi. Nec laoreet erat, ut suscipit proin arcu feugiat ante, non sit placerat. Suscipit a ipsum, taciti justo <br>ante dui, habitant mauris, non ut nibh ipsum curabitur, sollicitudin neque nascetur fermentum dignissim. <br>Augue wisi arcu nulla. Sed et tortor <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vitae, pretium dui tempor amet ullamcorper amet euismod, in massa congue urna fusce, quis cubilia ultrices lobortis, felis fusce. Platea rutrum <br> pulvinar a, interdum non quam suspendisse neque, per amet fringilla sem magna litora. Quis lacus nulla nec consectetuer sapien lectus, congue donec. <br>Malesuada elit mi placerat magna turpis. Praesent scelerisque quis pretium sociis, fusce luctus. Similique ultricies faucibus feugiat, pede duis, <br>venenatis magna. Vestibulum dignissim nulla suscipit ac ullamcorper. Vestibulum voluptatem ligula, ac integer feugiat, lectus at magna, dolore <br>pretium molestie pulvinar. Erat a proin. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Luctus ac in, elit esse, ipsam sed mollis phasellus dictum. Nec vitae. Cras purus praesent porttitor a dolor natoque, urna amet velit sed <br>adipiscing. Sit arcu metus magna, viverra dolor, fames iaculis praesent congue sagittis. Pulvinar dis purus <br>lobortis mauris lectus, nulla rutrum volutpat tempor ut quam interdum, senectus ultrices vestibulum massa, aliquam ridiculus et vitae pede dui <br>vestibulum, eu possimus ante ac. Nec lacus mi ut ullamcorper consectetuer, mattis faucibus, nec quis ea quisque sed hendrerit. Ipsam eu feugiat <br>ipsum, ligula nulla, metus mollis faucibus lacinia, ligula commodo lobortis in, rem sed quis dignissim rutrum mi dapibus. Leo etiam, dui metus <br>placerat faucibus ut, potenti arcu ultricies, tempus donec et iaculis, platea justo amet habitant. Egestas tincidunt, aliquet facilisi porttitor <br>dignissim magnis.";
-var input;
 var error="Command Not Found"
-var one, two, three, four, five;
+var one, two, three, four, five
+var record=[];
+var spending=[23143,35462,345,3456,1345];
+var earning=[3456,1435,5637,1234,5462];
 function main (item) {
 	var items=item.split(" ");
-	var feed=" ";
-	//$"home value"
-	for(i=0;i<items.length;i++){
-			switch (items[i]) {
-				case "del":
-					feed="del";
-					break;
-				case "clear":
-					feed="clear";
-					break;
-				case "gmanage":
-					feed="gmanage";
-					break;
-				case "amanage":
-					feed="amanage"
-					break;
-				case "help":
-					feed="help";
-					break;
-				case "view":
-					feed="view";
-					break;
-				case "object":
-					feed="oC";
-					break;
-				case "array":
-					feed="aC";
-					break;
-				case "string":
-					feed="sC";
-					break;
-				case "lorem":
-					feed="lorem";
-					break;
-				case "weather":
-					feed="weather";
-					break;
-				case "refresh":
-					feed="refresh";
-					break;
-				case "alias":
-					feed="alias";
-					break;
-				case "clear":
-					feed="clear";
-					break;
-				case "history":
-					feed="history";
-					break;
-				case "em":
-					feed="em";
-					break;
-				case "emc":
-					feed="emc";
-					break;
-				case "emd":
-					feed="emd";
-					break;
-				case "eml":
-					feed="eml";
-					break;
-				case "emp":
-					feed="emp";
-					break;
-				case "emdm":
-					feed="emdm";
-					break;
-				case "hierarchy":
-					feed="hierarchy";
-					break;
-			}
-		}
+	var feed;
+	var cmds=["spending","spending-net","profits","set-spending","set-earning","del","object","array","string","gmanage","amanage","help","view","clear","lorem","weather","refresh","alias","history","em","emc","emd","eml","emp","emdm","hierarchy","theme"];
+	if(cmds.indexOf(items[0])>-1){
+		feed=items[0];
+	}
 	arryr=items;
 	switch (feed) {
+		case "spending":
+			spending();
+			break;
+		case "spending-net":
+			spendingNet();
+			break;
+		case "profits":
+			profits()
+			break;
+		case "set-spending":
+			one=arryr[1];
+			setSpending(one);
+			break;
+		case "set-earning":
+			one=arryr[1];
+			setEarning(one);		
+			break;
 		case "del":
 			one=arryr[1];
 			del(one);
@@ -135,20 +57,20 @@ function main (item) {
 		case "view":
 			view();
 			break;
-		case "oC":
+		case "object":
 			one=arryr[1];
 			two=arryr[2];
 			three=arryr.slice(3);
 			three=three.join(" ");
 			oc(one,two,three);
 			break;
-		case "aC":
+		case "array":
 			one=arryr[1];
 			two=arryr.slice(2);
 			two=two.join(" ");
 			ac(one,two);
 			break;
-		case "sC":
+		case "string":
 			one=arryr[1];
 			two=arryr.slice(2);
 			two=two.join(" ");
@@ -198,6 +120,10 @@ function main (item) {
 			break;
 		case "hierarchy":
 			hierarchy();
+			break;
+		case "theme":
+			one=arryr[1];
+			theme(one);
 			break;
 		default:
 			$("#targetDiv").prepend('<pre>'+error+'</pre>');
@@ -540,7 +466,14 @@ function em(){
 	if(confirmin){
 		new Employee(name, sector, rank, mf, ID);
 		$("#targetDiv").prepend("<pre>"+"Employee Created; ID: "+ID+"; Name: "+name+"; Sector: "+sector+"; Rank: "+rank+"; M/F: "+mf+"</pre>");
-
+		if(!record[0]){
+			record.push(1);
+		}else if(record[0]){
+			var curr=record[length-1];
+			var pu=curr+1;
+			record.push(pu);
+		}
+		console.log(record);
 	}else{
 		console.log("Employee addition cancled");
 		$("#targetDiv").prepend("<pre>Employee addition cancled</pre>");
@@ -561,8 +494,18 @@ function emc(id){
 	$('#targetDiv').scrollTop($('#div1').height());	
 }
 function emd(id){
-	delete employees[id];
-	$("#targetDiv").prepend("<pre>Deleted</pre>");
+	if(id){
+		delete employees[id];
+		var lastI=record[record.length-1];
+		var pu=lastI-1;
+		record.push(pu);
+		console.log(record);
+		$("#targetDiv").prepend("<pre>Deleted</pre>");
+
+	}else{
+		$("#targetDiv").prepend("<pre>No ID</pre>");
+
+	}
 	$('#targetDiv').scrollTop($('#div1').height());	
 
 }
@@ -652,5 +595,141 @@ function hierarchy(){
 	var output=oper+"\n"+"-----------\n"+admi+"\n"+"-----------\n"+exe+"\n"+"-----------\n";
 	$("#targetDiv").prepend("<pre>"+output+"</pre>");		
 	$('#targetDiv').scrollTop($('#div1').height());	
+}
+function theme(themeNumber){
+	var bkred,bottom, txt;
+	switch(themeNumber){
+		case "light":
+			bkred=light[0];
+			bottom=light[1];
+			txt=light[2];
+			break;
+		case "dark":
+			bkred=dark[0];
+			bottom=dark[1];
+			txt=dark[2];
+			break;
+		case "code":
+			bkred=code[0];
+			bottom=code[1];
+			txt=code[2];
+			break;
+		case "solarized":
+			bkred=solarized[0];
+			bottom=solarized[1];
+			txt=solarized[2];
+			break;
+		case "polar":
+			bkred=polar[0];
+			bottom=polar[1];
+			txt=polar[2];
+			break;
+		case "vulcan":
+			bkred=vulcan[0];
+			bottom=vulcan[1];
+			txt=vulcan[2];
+			break;
+		case "reversedLight":
+			bkred=reversedLight[0];
+			bottom=reversedLight[1];
+			txt=reversedLight[2];
+			break;
+		default:
+			$("#targetDiv").prepend("<pre>Light, dark, code, solarized, polar, vulcan, reversedLight</pre>");		
+			break;
+	}
+	$("#targetDiv").css("background-color",bkred);
+	$("#input").css("background-color",bkred);
+	$("#footer").css("background-color",bottom);
+	$("pre").css("color",txt);
+}
+function setSpending(amount){
+	if(!amount){
+		$("#targetDiv").prepend("<pre>No Amount Entered</pre>");	
+		$('#targetDiv').scrollTop($('#div1').height());
+		return;		
+	}
+	var conn=prompt("Y/N "+amount+"? Y/N");
+	var con=false;
+	if(conn==="y"){
+		con=true;
+	}
+	if(con){
+		spending.push(amount);	
+		$("#targetDiv").prepend("<pre>"+amount+" was added to spending</pre>");
+		console.log(spending);			
+	}else{
+		$("#targetDiv").prepend("<pre>Addition cancled</pre>");			
+	}
+	$('#targetDiv').scrollTop($('#div1').height());
+}
+function setEarning(amount){
+	if(!amount){
+		$("#targetDiv").prepend("<pre>No Amount Entered</pre>");	
+		$('#targetDiv').scrollTop($('#div1').height());
+		return;		
+	}
+	var conn=prompt("Y/N "+amount+"? Y/N");
+	var con=false;
+	if(conn==="y"){
+		con=true;
+	}
+	if(con){
+		earning.push(amount);	
+		$("#targetDiv").prepend("<pre>"+amount+" was added to spending</pre>");
+		console.log(earning);			
+	}else{
+		$("#targetDiv").prepend("<pre>Addition cancled</pre>");			
+	}
+	$('#targetDiv').scrollTop($('#div1').height());
+}
+function spending(){
+}
+function spendingNet(){
+var lol=[];
+	$("#targetDiv").prepend("<canvas></canvas>");
+	$("canvas").first().attr("id","history");
+	$("canvas").first().attr("height","100");
+	$("canvas").first().attr("width","300");
+	var ctx = document.getElementById("history");
+	var d=1;
+	var c=true;
+	var a=spending.length;
+	var b=earning.length;
+	if(a<b){
+		c=false;
+	}
+	//if c is false, then b is longer (earning is longer)
+	if(c){
+		for (var i = 0; i < spending.length; i++) {
+			lol.push(d);
+			d++;
+		}
+	}else if(!c){
+		for (var i = 0; i < earning.length; i++) {
+			lol.push(d);
+			d++;
+		}
+	}
+	console.log(lol);
+	var myCharts = new Chart(ctx, {
+		type: 'line',
+
+		labels : lol,
+		data: {
+		    datasets: [
+			{
+				label: 'Spending',
+				data: spending,
+				borderColor: "rgb(10, 38, 255)"
+			},{
+				label: 'Earning',
+				data: earning,				
+				borderColor: "rgba(153,255,51,0.4)"
+			}]
+		}
+	});
+}
+function profits(){
 
 }
