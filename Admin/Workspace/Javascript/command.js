@@ -7,29 +7,12 @@ var earning=[3456,1435,5637,1234,5462];
 function main (item) {
 	var items=item.split(" ");
 	var feed;
-	var cmds=["spending","spending-net","profits","set-spending","set-earning","del","object","array","string","gmanage","amanage","help","view","clear","lorem","weather","refresh","alias","history","em","emc","emd","eml","emp","emdm","hierarchy","theme"];
+	var cmds=["del","object","array","string","gmanage","amanage","help","view","clear","lorem","weather","refresh","alias","history","em","emc","emd","eml","emp","emdm","hierarchy","theme"];
 	if(cmds.indexOf(items[0])>-1){
 		feed=items[0];
 	}
 	arryr=items;
 	switch (feed) {
-		case "spending":
-			spending();
-			break;
-		case "spending-net":
-			spendingNet();
-			break;
-		case "profits":
-			profits()
-			break;
-		case "set-spending":
-			one=arryr[1];
-			setSpending(one);
-			break;
-		case "set-earning":
-			one=arryr[1];
-			setEarning(one);		
-			break;
 		case "del":
 			one=arryr[1];
 			del(one);
@@ -642,94 +625,4 @@ function theme(themeNumber){
 	$("#input").css("background-color",bkred);
 	$("#footer").css("background-color",bottom);
 	$("pre").css("color",txt);
-}
-function setSpending(amount){
-	if(!amount){
-		$("#targetDiv").prepend("<pre>No Amount Entered</pre>");	
-		$('#targetDiv').scrollTop($('#div1').height());
-		return;		
-	}
-	var conn=prompt("Y/N "+amount+"? Y/N");
-	var con=false;
-	if(conn==="y"){
-		con=true;
-	}
-	if(con){
-		spending.push(amount);	
-		$("#targetDiv").prepend("<pre>"+amount+" was added to spending</pre>");
-		console.log(spending);			
-	}else{
-		$("#targetDiv").prepend("<pre>Addition cancled</pre>");			
-	}
-	$('#targetDiv').scrollTop($('#div1').height());
-}
-function setEarning(amount){
-	if(!amount){
-		$("#targetDiv").prepend("<pre>No Amount Entered</pre>");	
-		$('#targetDiv').scrollTop($('#div1').height());
-		return;		
-	}
-	var conn=prompt("Y/N "+amount+"? Y/N");
-	var con=false;
-	if(conn==="y"){
-		con=true;
-	}
-	if(con){
-		earning.push(amount);	
-		$("#targetDiv").prepend("<pre>"+amount+" was added to spending</pre>");
-		console.log(earning);			
-	}else{
-		$("#targetDiv").prepend("<pre>Addition cancled</pre>");			
-	}
-	$('#targetDiv').scrollTop($('#div1').height());
-}
-function spending(){
-}
-function spendingNet(){
-var lol=[];
-	$("#targetDiv").prepend("<canvas></canvas>");
-	$("canvas").first().attr("id","history");
-	$("canvas").first().attr("height","100");
-	$("canvas").first().attr("width","300");
-	var ctx = document.getElementById("history");
-	var d=1;
-	var c=true;
-	var a=spending.length;
-	var b=earning.length;
-	if(a<b){
-		c=false;
-	}
-	//if c is false, then b is longer (earning is longer)
-	if(c){
-		for (var i = 0; i < spending.length; i++) {
-			lol.push(d);
-			d++;
-		}
-	}else if(!c){
-		for (var i = 0; i < earning.length; i++) {
-			lol.push(d);
-			d++;
-		}
-	}
-	console.log(lol);
-	var myCharts = new Chart(ctx, {
-		type: 'line',
-
-		labels : lol,
-		data: {
-		    datasets: [
-			{
-				label: 'Spending',
-				data: spending,
-				borderColor: "rgb(10, 38, 255)"
-			},{
-				label: 'Earning',
-				data: earning,				
-				borderColor: "rgba(153,255,51,0.4)"
-			}]
-		}
-	});
-}
-function profits(){
-
 }
